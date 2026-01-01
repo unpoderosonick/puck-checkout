@@ -1,0 +1,115 @@
+.container {
+  margin-bottom: var(--spacing-md);
+}
+
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.method {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+.method:last-child {
+  border-bottom: none;
+}
+
+.method:hover {
+  background: var(--color-background);
+}
+
+.method.selected {
+  background: var(--color-primary-light, rgba(23, 115, 176, 0.05));
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radioCircle {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  transition: all var(--transition-fast);
+}
+
+.method:hover .radioCircle {
+  border-color: var(--color-primary);
+}
+
+.radio:checked + .radioCircle {
+  border-color: var(--color-primary);
+}
+
+.radio:checked + .radioCircle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+.radio:focus + .radioCircle {
+  box-shadow: var(--shadow-focus);
+}
+
+.methodInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.methodHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.methodName {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.methodPrice {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.methodDescription {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.estimatedDays {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}

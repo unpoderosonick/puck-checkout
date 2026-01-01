@@ -1,0 +1,98 @@
+.container {
+  padding: var(--spacing-lg) 0;
+}
+
+.container.left {
+  text-align: left;
+}
+
+.container.center {
+  text-align: center;
+}
+
+.container.right {
+  text-align: right;
+}
+
+.badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+}
+
+.container.left .badges {
+  justify-content: flex-start;
+}
+
+.container.center .badges {
+  justify-content: center;
+}
+
+.container.right .badges {
+  justify-content: flex-end;
+}
+
+/* Sizes */
+.small .badge {
+  gap: var(--spacing-xs);
+}
+
+.small .icon {
+  font-size: 16px;
+}
+
+.small .label {
+  font-size: var(--font-size-xs);
+}
+
+.medium .badge {
+  gap: var(--spacing-sm);
+}
+
+.medium .icon {
+  font-size: 20px;
+}
+
+.medium .label {
+  font-size: var(--font-size-sm);
+}
+
+.large .badge {
+  gap: var(--spacing-sm);
+}
+
+.large .icon {
+  font-size: 24px;
+}
+
+.large .label {
+  font-size: var(--font-size-base);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Image icons */
+.icon img {
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+}

@@ -1,0 +1,90 @@
+.header {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content.left {
+  justify-content: flex-start;
+  gap: var(--spacing-xl);
+}
+
+.content.center {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.content.center .secureBadge {
+  position: absolute;
+  right: var(--spacing-xl);
+}
+
+.content.right {
+  justify-content: flex-end;
+  gap: var(--spacing-xl);
+}
+
+.content.right .logoWrapper {
+  order: 1;
+}
+
+.content.right .secureBadge {
+  order: 0;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: auto;
+  object-fit: contain;
+}
+
+.logoPlaceholder {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.secureBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-background);
+  border-radius: var(--radius-full);
+}
+
+.lockIcon {
+  font-size: var(--font-size-sm);
+}
+
+.secureText {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .content.center .secureBadge {
+    position: static;
+  }
+}

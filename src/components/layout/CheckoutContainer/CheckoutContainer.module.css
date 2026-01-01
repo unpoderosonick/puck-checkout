@@ -1,0 +1,89 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 100vh;
+}
+
+.main {
+  background: var(--color-surface, #ffffff);
+  padding: var(--spacing-2xl, 32px);
+  min-height: 400px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure DropZones inside main are visible and accessible */
+.main > div {
+  min-height: 200px;
+  position: relative;
+  z-index: 1;
+}
+
+.main > div:empty {
+  border: 2px dashed var(--color-border, #d6d6d6);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.main > div:empty::after {
+  content: 'Drop form fields here';
+  color: var(--color-text-muted, #898f94);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.sidebar {
+  background: var(--color-background, #f7f7f7);
+  padding: var(--spacing-2xl, 32px);
+  min-height: 400px;
+  position: relative;
+  z-index: 1;
+  /* Removed sticky and overflow that break drag & drop */
+}
+
+/* Ensure DropZones inside sidebar are visible and accessible */
+.sidebar > div {
+  min-height: 150px;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar > div:empty {
+  border: 2px dashed var(--color-border, #d6d6d6);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(247, 247, 247, 0.5);
+}
+
+.sidebar > div:empty::after {
+  content: 'Drop order summary here';
+  color: var(--color-text-muted, #898f94);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr !important;
+  }
+
+  .main {
+    order: 2;
+    padding: var(--spacing-lg, 16px);
+    min-height: 300px;
+  }
+
+  .sidebar {
+    order: 1;
+    padding: var(--spacing-lg, 16px);
+    min-height: 200px;
+  }
+}

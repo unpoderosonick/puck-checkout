@@ -1,0 +1,86 @@
+.summary {
+  padding: var(--spacing-lg) 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+}
+
+.label {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.value {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.discountCode {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: var(--color-success-light, rgba(39, 174, 96, 0.1));
+  color: var(--color-success);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.discountValue {
+  font-size: var(--font-size-base);
+  color: var(--color-success);
+  font-weight: 500;
+}
+
+.freeShipping {
+  color: var(--color-success);
+  font-weight: 500;
+}
+
+.shippingNote {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: right;
+  margin-top: -4px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--spacing-md) 0;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: var(--spacing-xs);
+}
+
+.totalLabel {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.totalValue {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.currency {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-right: var(--spacing-xs);
+}

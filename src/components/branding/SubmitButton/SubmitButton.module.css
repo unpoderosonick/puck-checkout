@@ -1,0 +1,103 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  border: none;
+  border-radius: var(--radius-xl);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+/* Sizes */
+.medium {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-base);
+}
+
+.large {
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-size: var(--font-size-lg);
+}
+
+/* Full width */
+.fullWidth {
+  width: 100%;
+}
+
+/* Variants */
+.primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.success {
+  background: var(--color-success);
+  color: white;
+}
+
+.success:hover {
+  background: #219a52;
+}
+
+.dark {
+  background: #1a1a1a;
+  color: white;
+}
+
+.dark:hover {
+  background: #333333;
+}
+
+.lockIcon {
+  font-size: 1em;
+  opacity: 0.9;
+}
+
+.text {
+  flex: 1;
+}
+
+.amount {
+  padding-left: var(--spacing-sm);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  margin-left: var(--spacing-sm);
+}
+
+/* Hover effects */
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Loading state (for future use) */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
