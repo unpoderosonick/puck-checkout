@@ -26,20 +26,17 @@
 }
 
 .bump {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
   padding: var(--spacing-lg);
   cursor: pointer;
-}
-
-.content {
-  display: flex;
-  gap: var(--spacing-md);
 }
 
 .checkbox {
   position: relative;
   flex-shrink: 0;
-  margin-top: 2px;
+  align-self: center;
 }
 
 .input {
@@ -87,6 +84,7 @@
 
 .imageWrapper {
   flex-shrink: 0;
+  align-self: center;
 }
 
 .image {
@@ -154,11 +152,17 @@
 }
 
 @media (max-width: 480px) {
-  .content {
+  .bump {
     flex-wrap: wrap;
   }
 
-  .imageWrapper {
-    order: -1;
+  .checkbox {
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+
+  .details {
+    width: 100%;
+    margin-top: var(--spacing-sm);
   }
 }

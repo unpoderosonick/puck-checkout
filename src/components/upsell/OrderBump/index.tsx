@@ -32,27 +32,25 @@ export const OrderBump = ({
           <span className={styles.checkmark} />
         </div>
 
-        <div className={styles.content}>
-          <div className={styles.imageWrapper}>
-            <img src={image} alt={title} className={styles.image} />
-          </div>
+        <div className={styles.imageWrapper}>
+          <img src={image} alt={title} className={styles.image} />
+        </div>
 
-          <div className={styles.details}>
-            <span className={styles.checkboxLabel}>{checkboxLabel}</span>
-            <h4 className={styles.title}>{title}</h4>
-            <p className={styles.description}>{description}</p>
+        <div className={styles.details}>
+          <span className={styles.checkboxLabel}>{checkboxLabel}</span>
+          <h4 className={styles.title}>{title}</h4>
+          <p className={styles.description}>{description}</p>
 
-            <div className={styles.pricing}>
-              {hasDiscount && (
-                <span className={styles.originalPrice}>${originalPrice.toFixed(2)}</span>
-              )}
-              <span className={styles.price}>${price.toFixed(2)}</span>
-              {hasDiscount && (
-                <span className={styles.badge}>
-                  Save ${(originalPrice - price).toFixed(2)}
-                </span>
-              )}
-            </div>
+          <div className={styles.pricing}>
+            {hasDiscount && (
+              <span className={styles.originalPrice}>${originalPrice.toFixed(2)}</span>
+            )}
+            <span className={styles.price}>${price.toFixed(2)}</span>
+            {hasDiscount && (
+              <span className={styles.badge}>
+                Save ${(originalPrice - price).toFixed(2)}
+              </span>
+            )}
           </div>
         </div>
       </label>
