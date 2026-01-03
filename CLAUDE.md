@@ -12,10 +12,10 @@ src/
 ├── main.tsx               # Entry point
 ├── puck/
 │   ├── config.tsx         # Puck configuration with all components
-│   └── defaultCheckout.ts # Default checkout layout data
+│   └── defaultCheckout.ts # Default Shopify-style checkout layout
 ├── components/
 │   ├── layout/            # Container and structure components
-│   │   ├── CheckoutContainer/  # Two-column layout with DropZones
+│   │   ├── CheckoutContainer/  # Two-column layout (main + sidebar)
 │   │   ├── Section/           # Collapsible section with DropZone
 │   │   ├── FormRow/           # Multi-column form row with DropZone
 │   │   └── Divider/           # Visual separator
@@ -25,14 +25,16 @@ src/
 │   │   ├── PhoneField/
 │   │   ├── SelectField/
 │   │   ├── AddressField/
-│   │   └── CheckboxField/
+│   │   ├── CheckboxField/
+│   │   ├── NameFieldsRow/     # First name + Last name side by side
+│   │   └── CityStateZipRow/   # City + State + ZIP in 3 columns
 │   ├── checkout/          # Checkout-specific components
 │   │   ├── ProductCard/
-│   │   ├── OrderSummary/
+│   │   ├── OrderSummary/      # Dynamic totals from Zustand store
 │   │   ├── ShippingSelector/
-│   │   ├── PaymentSelector/
+│   │   ├── PaymentSelector/   # Credit card + PayPal with Shopify icons
 │   │   ├── DiscountInput/
-│   │   └── TipSelector/
+│   │   └── TipSelector/       # Percentage options with dollar amounts
 │   ├── upsell/            # Upsell and offer components
 │   │   ├── UpsellCard/
 │   │   ├── PostPurchaseOffer/
@@ -40,7 +42,7 @@ src/
 │   │   ├── OrderBump/
 │   │   └── BundleBuilder/
 │   └── branding/          # Header, footer, and branding
-│       ├── Header/
+│       ├── Header/            # Supports textColor for dark backgrounds
 │       ├── SubmitButton/
 │       ├── TrustBadges/
 │       └── FooterLinks/
@@ -110,7 +112,28 @@ The zone name creates a unique path like `component-id:content` in Puck's data s
 
 - **Puck manages its own internal state** for the editor
 - **localStorage** saves the checkout configuration when published
-- **Zustand store** (`checkoutStore.ts`) manages runtime checkout state (cart, form data, etc.)
+- **Zustand store** (`checkoutStore.ts`) manages runtime checkout state:
+  - Cart items and quantities
+  - Subtotal, shipping, tax, and total calculations
+  - Selected shipping method
+  - Tip amount
+
+## Design System
+
+### Input Styling
+
+All form inputs follow Shopify's design:
+- **Height**: 48px
+- **Border radius**: 8px
+- **Focus state**: Blue border with shadow
+
+### Color Variables
+
+Key CSS variables in `variables.css`:
+- `--color-primary`: #1773b0 (Shopify blue)
+- `--color-surface`: #ffffff
+- `--color-background`: #f5f5f5
+- `--color-border`: #d9d9d9
 
 ## Running the App
 
@@ -128,8 +151,7 @@ npm run build
 ## Editor Controls
 
 - **Reset button** (red): Clears localStorage and reloads with default layout
-- **Preview/Edit button** (blue/green): Toggles between editor and preview mode
-- **Publish button** (in Puck header): Saves configuration to localStorage
+- **Preview/Edit button** (green/blue): Toggles between editor and preview mode
 
 ## Key Technical Decisions
 
@@ -137,6 +159,7 @@ npm run build
 2. **No React.FC**: Components use explicit `(): JSX.Element` return types for Puck compatibility
 3. **CSS Variables**: Design tokens in `variables.css` enable theming
 4. **Simplified DropZones**: Removed `position: sticky` and `overflow` from containers to fix drag-and-drop issues
+5. **Shopify CDN Icons**: PaymentSelector uses official Shopify CDN SVG icons for card brands
 
 ## Common Issues
 
@@ -157,10 +180,31 @@ npm run build
 | Category | Components | Purpose |
 |----------|------------|---------|
 | Layout | CheckoutContainer, Section, FormRow, Divider | Page structure and containers |
-| Form | TextField, EmailField, PhoneField, SelectField, AddressField, CheckboxField | User input fields |
+| Form | TextField, EmailField, PhoneField, SelectField, AddressField, CheckboxField, NameFieldsRow, CityStateZipRow | User input fields |
 | Checkout | ProductCard, OrderSummary, ShippingSelector, PaymentSelector, DiscountInput, TipSelector | Checkout flow elements |
 | Upsell | UpsellCard, PostPurchaseOffer, DownsellModal, OrderBump, BundleBuilder | Conversion optimization |
 | Branding | Header, SubmitButton, TrustBadges, FooterLinks | Visual branding elements |
+
+## Notable Component Features
+
+### Header
+- `textColor` prop: 'light' or 'dark' for visibility on different backgrounds
+- `backgroundColor` prop: Supports any color including black for Shopify-style headers
+
+### PaymentSelector
+- Uses Shopify CDN SVG icons for VISA, Mastercard, AMEX
+- PayPal option with redirect message
+- Security text: "All transactions are secure and encrypted"
+
+### TipSelector
+- Percentage options (5%, 10%, 20%) with calculated dollar amounts
+- "None" option and custom amount input
+- All options have equal width
+
+### OrderSummary
+- Connected to Zustand store for dynamic totals
+- Shows subtotal, shipping, and total
+- Updates automatically when cart changes
 
 ## Future Enhancements
 
