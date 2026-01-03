@@ -28,6 +28,7 @@ interface CheckoutStore {
   // Shipping
   shippingMethods: ShippingMethod[];
   selectedShipping: string;
+  setShippingMethods: (methods: ShippingMethod[]) => void;
   setSelectedShipping: (id: string) => void;
 
   // Discount
@@ -103,11 +104,11 @@ export const useCheckoutStore = create<CheckoutStore>((set, get) => ({
 
   // Shipping
   shippingMethods: [
-    { id: 'standard', name: 'Standard Shipping', price: 5.99, estimatedDays: '5-7 business days' },
-    { id: 'express', name: 'Express Shipping', price: 12.99, estimatedDays: '2-3 business days' },
-    { id: 'overnight', name: 'Overnight', price: 24.99, estimatedDays: 'Next business day' },
+    { id: 'standard', name: 'Secure Standard Shipping', price: 4.95, estimatedDays: '' },
+    { id: 'express', name: 'Fast Shipping + Insurance + Tracking', price: 7.95, estimatedDays: '' },
   ],
   selectedShipping: 'standard',
+  setShippingMethods: (methods) => set({ shippingMethods: methods }),
   setSelectedShipping: (id) => set({ selectedShipping: id }),
 
   // Discount

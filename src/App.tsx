@@ -98,6 +98,9 @@ function App() {
           onChange={handleChange}
           onPublish={handlePublish}
           headerTitle="Checkout Builder"
+          overrides={{
+            headerActions: () => null,
+          }}
         />
       ) : (
         <div className="checkout-preview">

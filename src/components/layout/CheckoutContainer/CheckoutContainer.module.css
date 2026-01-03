@@ -1,39 +1,28 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 400px;
   gap: 0;
   min-height: 100vh;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .main {
   background: var(--color-surface, #ffffff);
-  padding: var(--spacing-2xl, 32px);
+  padding: var(--spacing-2xl, 32px) var(--spacing-3xl, 48px);
   min-height: 400px;
   position: relative;
   z-index: 1;
+  border-right: 1px solid var(--color-border-light, #e5e7eb);
 }
 
-/* Ensure DropZones inside main are visible and accessible */
+/* Content wrapper inside main */
 .main > div {
-  min-height: 200px;
+  min-height: 100px;
   position: relative;
   z-index: 1;
-}
-
-.main > div:empty {
-  border: 2px dashed var(--color-border, #d6d6d6);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.main > div:empty::after {
-  content: 'Drop form fields here';
-  color: var(--color-text-muted, #898f94);
-  font-size: 14px;
-  pointer-events: none;
+  max-width: 500px;
+  margin-left: auto;
 }
 
 .sidebar {
@@ -42,33 +31,17 @@
   min-height: 400px;
   position: relative;
   z-index: 1;
-  /* Removed sticky and overflow that break drag & drop */
 }
 
-/* Ensure DropZones inside sidebar are visible and accessible */
+/* Content wrapper inside sidebar */
 .sidebar > div {
-  min-height: 150px;
+  min-height: 50px;
   position: relative;
   z-index: 1;
+  max-width: 360px;
 }
 
-.sidebar > div:empty {
-  border: 2px dashed var(--color-border, #d6d6d6);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(247, 247, 247, 0.5);
-}
-
-.sidebar > div:empty::after {
-  content: 'Drop order summary here';
-  color: var(--color-text-muted, #898f94);
-  font-size: 14px;
-  pointer-events: none;
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .container {
     display: flex;
     flex-direction: column;
@@ -79,11 +52,21 @@
     order: 2;
     padding: var(--spacing-lg, 16px);
     min-height: 300px;
+    border-right: none;
+  }
+
+  .main > div {
+    max-width: 100%;
+    margin-left: 0;
   }
 
   .sidebar {
     order: 1;
     padding: var(--spacing-lg, 16px);
-    min-height: 200px;
+    min-height: auto;
+  }
+
+  .sidebar > div {
+    max-width: 100%;
   }
 }

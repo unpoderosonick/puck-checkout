@@ -59,9 +59,9 @@
   --transition-slow: 0.3s ease;
 
   /* Layout */
-  --max-width: 1280px;
-  --sidebar-width: 480px;
-  --main-width: 570px;
+  --max-width: 1100px;
+  --sidebar-width: 400px;
+  --main-width: 500px;
 }
 
 /* Base Styles */

@@ -1,5 +1,14 @@
 import type { ComponentConfig } from '@measured/puck';
+import { useCheckoutStore } from '../../../store/checkoutStore';
 import styles from './OrderSummary.module.css';
+
+const QuestionIcon = (): JSX.Element => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+    <line x1="12" y1="17" x2="12.01" y2="17" />
+  </svg>
+);
 
 export interface OrderSummaryProps {
   subtotal: number;
@@ -14,7 +23,7 @@ export interface OrderSummaryProps {
 
 export const OrderSummary = ({
   subtotal,
-  shipping,
+  shipping: defaultShipping,
   shippingLabel,
   discount,
   discountCode,
@@ -22,7 +31,15 @@ export const OrderSummary = ({
   showTax,
   currency,
 }: OrderSummaryProps): JSX.Element => {
-  const total = subtotal - discount + shipping + (showTax ? tax : 0);
+  // Get dynamic values from store
+  const storeShipping = useCheckoutStore((state) => state.getShippingCost());
+  const storeTip = useCheckoutStore((state) => state.tipAmount);
+
+  // Use store values if available, otherwise use props
+  const shipping = storeShipping > 0 ? storeShipping : defaultShipping;
+  const tip = storeTip;
+
+  const total = subtotal - discount + shipping + (showTax ? tax : 0) + tip;
   const currencySymbol = currency === 'USD' ? '$' : currency === 'EUR' ? '€' : '$';
 
   return (
@@ -45,7 +62,10 @@ export const OrderSummary = ({
       )}
 
       <div className={styles.row}>
-        <span className={styles.label}>Shipping</span>
+        <span className={styles.label}>
+          Shipping
+          <span className={styles.helpIcon}><QuestionIcon /></span>
+        </span>
         <span className={styles.value}>
           {shipping === 0 ? (
             <span className={styles.freeShipping}>Free</span>
@@ -54,8 +74,15 @@ export const OrderSummary = ({
           )}
         </span>
       </div>
-      {shippingLabel && (
+      {shipping === 0 && shippingLabel && (
         <div className={styles.shippingNote}>{shippingLabel}</div>
+      )}
+
+      {tip > 0 && (
+        <div className={styles.row}>
+          <span className={styles.label}>Tip</span>
+          <span className={styles.value}>{currencySymbol}{tip.toFixed(2)}</span>
+        </div>
       )}
 
       {showTax && (
@@ -87,11 +114,11 @@ export const orderSummaryConfig: ComponentConfig<OrderSummaryProps> = {
     },
     shipping: {
       type: 'number',
-      label: 'Shipping Cost',
+      label: 'Default Shipping Cost',
     },
     shippingLabel: {
       type: 'text',
-      label: 'Shipping Method Label',
+      label: 'Shipping Note (shown when free)',
     },
     discount: {
       type: 'number',
@@ -125,13 +152,13 @@ export const orderSummaryConfig: ComponentConfig<OrderSummaryProps> = {
     },
   },
   defaultProps: {
-    subtotal: 149.99,
-    shipping: 5.99,
-    shippingLabel: 'Standard Shipping (5-7 days)',
+    subtotal: 129.00,
+    shipping: 0,
+    shippingLabel: 'Enter shipping address',
     discount: 0,
     discountCode: '',
-    tax: 12.50,
-    showTax: true,
+    tax: 0,
+    showTax: false,
     currency: 'USD',
   },
   render: OrderSummary,

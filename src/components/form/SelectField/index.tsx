@@ -17,38 +17,36 @@ export interface SelectFieldProps {
 export const SelectField = ({
   name,
   label,
-  placeholder,
   required,
   options,
 }: SelectFieldProps): JSX.Element => {
   return (
     <div className={styles.formGroup}>
-      {label && (
-        <label htmlFor={name} className={styles.label}>
-          {label}
-          {required && <span className={styles.required}>*</span>}
-        </label>
-      )}
       <div className={styles.selectWrapper}>
+        {label && (
+          <label htmlFor={name} className={styles.label}>
+            {label}
+            {required && <span className={styles.required}>*</span>}
+          </label>
+        )}
         <select
           id={name}
           name={name}
           required={required}
           className={styles.select}
-          defaultValue=""
+          defaultValue={options[0]?.value || ''}
         >
-          {placeholder && (
-            <option value="" disabled>
-              {placeholder}
-            </option>
-          )}
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </select>
-        <span className={styles.arrow} />
+        <span className={styles.arrow}>
+          <svg viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </span>
       </div>
     </div>
   );

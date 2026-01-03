@@ -14,6 +14,8 @@ import { phoneFieldConfig } from '../components/form/PhoneField';
 import { selectFieldConfig } from '../components/form/SelectField';
 import { addressFieldConfig } from '../components/form/AddressField';
 import { checkboxFieldConfig } from '../components/form/CheckboxField';
+import { nameFieldsRowConfig } from '../components/form/NameFieldsRow';
+import { cityStateZipRowConfig } from '../components/form/CityStateZipRow';
 
 // Checkout Components
 import { productCardConfig } from '../components/checkout/ProductCard';
@@ -45,7 +47,7 @@ export const config: Config = {
     },
     form: {
       title: 'Form Fields',
-      components: ['TextField', 'EmailField', 'PhoneField', 'SelectField', 'AddressField', 'CheckboxField'],
+      components: ['TextField', 'EmailField', 'PhoneField', 'SelectField', 'AddressField', 'CheckboxField', 'NameFieldsRow', 'CityStateZipRow'],
       defaultExpanded: true,
     },
     checkout: {
@@ -117,6 +119,8 @@ export const config: Config = {
     SelectField: selectFieldConfig,
     AddressField: addressFieldConfig,
     CheckboxField: checkboxFieldConfig,
+    NameFieldsRow: nameFieldsRowConfig,
+    CityStateZipRow: cityStateZipRowConfig,
 
     // Checkout
     ProductCard: productCardConfig,

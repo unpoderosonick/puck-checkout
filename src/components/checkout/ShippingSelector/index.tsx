@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import type { ComponentConfig } from '@measured/puck';
+import { useCheckoutStore } from '../../../store/checkoutStore';
 import styles from './ShippingSelector.module.css';
 
 export interface ShippingMethod {
@@ -17,10 +19,30 @@ export interface ShippingSelectorProps {
 
 export const ShippingSelector = ({
   methods,
-  selectedMethod,
+  selectedMethod: defaultSelected,
   currency,
 }: ShippingSelectorProps): JSX.Element => {
+  const [selected, setSelected] = useState(defaultSelected);
+  const setShippingMethods = useCheckoutStore((state) => state.setShippingMethods);
+  const setSelectedShipping = useCheckoutStore((state) => state.setSelectedShipping);
+
   const currencySymbol = currency === 'USD' ? '$' : currency === 'EUR' ? '€' : '$';
+
+  // Update store with methods on mount
+  useEffect(() => {
+    setShippingMethods(methods.map(m => ({
+      id: m.id,
+      name: m.name,
+      price: m.price,
+      estimatedDays: m.estimatedDays,
+    })));
+    setSelectedShipping(defaultSelected);
+  }, [methods, defaultSelected, setShippingMethods, setSelectedShipping]);
+
+  const handleChange = (methodId: string) => {
+    setSelected(methodId);
+    setSelectedShipping(methodId);
+  };
 
   return (
     <div className={styles.container}>
@@ -28,13 +50,14 @@ export const ShippingSelector = ({
         {methods.map((method) => (
           <label
             key={method.id}
-            className={`${styles.method} ${selectedMethod === method.id ? styles.selected : ''}`}
+            className={`${styles.method} ${selected === method.id ? styles.selected : ''}`}
           >
             <input
               type="radio"
               name="shipping_method"
               value={method.id}
-              defaultChecked={selectedMethod === method.id}
+              checked={selected === method.id}
+              onChange={() => handleChange(method.id)}
               className={styles.radio}
             />
             <span className={styles.radioCircle} />
@@ -77,7 +100,7 @@ export const shippingSelectorConfig: ComponentConfig<ShippingSelectorProps> = {
         name: 'Shipping Method',
         description: '',
         price: 0,
-        estimatedDays: '5-7 business days',
+        estimatedDays: '',
       },
     },
     selectedMethod: {
@@ -96,9 +119,8 @@ export const shippingSelectorConfig: ComponentConfig<ShippingSelectorProps> = {
   },
   defaultProps: {
     methods: [
-      { id: 'standard', name: 'Standard Shipping', description: '', price: 5.99, estimatedDays: '5-7 business days' },
-      { id: 'express', name: 'Express Shipping', description: '', price: 12.99, estimatedDays: '2-3 business days' },
-      { id: 'overnight', name: 'Overnight', description: '', price: 24.99, estimatedDays: 'Next business day' },
+      { id: 'standard', name: 'Secure Standard Shipping', description: '', price: 4.95, estimatedDays: '' },
+      { id: 'express', name: 'Fast Shipping + Insurance + Tracking', description: '', price: 7.95, estimatedDays: '' },
     ],
     selectedMethod: 'standard',
     currency: 'USD',

@@ -16,16 +16,17 @@
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-right: none;
-  border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+  border-radius: 8px 0 0 8px;
   font-size: var(--font-size-lg);
 }
 
 .input {
   flex: 1;
   min-width: 0;
-  padding: var(--spacing-lg);
+  height: 48px;
+  padding: 12px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-radius: 8px;
   font-size: var(--font-size-base);
   font-family: inherit;
   color: var(--color-text);
@@ -56,13 +57,14 @@
 
 .button {
   flex-shrink: 0;
-  padding: var(--spacing-md) var(--spacing-xl);
+  height: 48px;
+  padding: 0 var(--spacing-lg);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-radius: 8px;
   font-size: var(--font-size-base);
   font-weight: 500;
-  color: var(--color-text);
+  color: var(--color-text-secondary);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -70,6 +72,7 @@
 .button:hover {
   background: var(--color-background);
   border-color: var(--color-text-secondary);
+  color: var(--color-text);
 }
 
 .button:active {

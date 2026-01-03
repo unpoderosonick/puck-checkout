@@ -23,22 +23,24 @@ export const FooterLinks = ({
 }: FooterLinksProps): JSX.Element => {
   return (
     <footer className={`${styles.footer} ${styles[alignment]}`}>
-      <nav className={styles.links}>
-        {links.map((link, index) => (
-          <span key={index}>
-            <a href={link.url} className={styles.link}>
-              {link.text}
-            </a>
-            {index < links.length - 1 && (
-              <span className={styles.separator}>{separator}</span>
-            )}
-          </span>
-        ))}
-      </nav>
+      <div className={styles.footerContent}>
+        <nav className={styles.links}>
+          {links.map((link, index) => (
+            <span key={index}>
+              <a href={link.url} className={styles.link}>
+                {link.text}
+              </a>
+              {index < links.length - 1 && (
+                <span className={styles.separator}>{separator}</span>
+              )}
+            </span>
+          ))}
+        </nav>
 
-      {showCopyright && (
-        <p className={styles.copyright}>{copyright}</p>
-      )}
+        {showCopyright && (
+          <p className={styles.copyright}>{copyright}</p>
+        )}
+      </div>
     </footer>
   );
 };

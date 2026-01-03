@@ -2,12 +2,20 @@
   margin-bottom: var(--spacing-md);
 }
 
+.selectWrapper {
+  position: relative;
+}
+
 .label {
-  display: block;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-xs);
+  position: absolute;
+  left: 12px;
+  top: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+  z-index: 1;
+  background: transparent;
 }
 
 .required {
@@ -15,16 +23,12 @@
   margin-left: 2px;
 }
 
-.selectWrapper {
-  position: relative;
-}
-
 .select {
   width: 100%;
-  padding: var(--spacing-lg);
-  padding-right: 40px;
+  height: 48px;
+  padding: 20px 36px 6px 12px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-radius: 8px;
   font-size: var(--font-size-base);
   font-family: inherit;
   color: var(--color-text);
@@ -51,19 +55,19 @@
   opacity: 0.6;
 }
 
-.select option[value=""][disabled] {
-  color: var(--color-text-muted);
-}
-
 .arrow {
   position: absolute;
-  right: 16px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 6px solid var(--color-text-secondary);
+  color: var(--color-text-secondary);
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow svg {
+  width: 10px;
+  height: 10px;
 }

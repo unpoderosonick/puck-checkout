@@ -1,18 +1,8 @@
-.formGroup {
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
   margin-bottom: var(--spacing-md);
-}
-
-.label {
-  display: block;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-xs);
-}
-
-.required {
-  color: var(--color-error);
-  margin-left: 2px;
 }
 
 .input {
@@ -44,9 +34,8 @@
   box-shadow: var(--shadow-focus);
 }
 
-.helpText {
-  display: block;
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
-  margin-top: var(--spacing-xs);
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
 }

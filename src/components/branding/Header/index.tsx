@@ -6,6 +6,7 @@ export interface HeaderProps {
   logoAlt: string;
   logoWidth: number;
   backgroundColor: string;
+  textColor: 'light' | 'dark';
   alignment: 'left' | 'center' | 'right';
   showSecureBadge: boolean;
 }
@@ -15,12 +16,13 @@ export const Header = ({
   logoAlt,
   logoWidth,
   backgroundColor,
+  textColor,
   alignment,
   showSecureBadge,
 }: HeaderProps): JSX.Element => {
   return (
     <header
-      className={styles.header}
+      className={`${styles.header} ${styles[textColor]}`}
       style={{ backgroundColor }}
     >
       <div className={`${styles.content} ${styles[alignment]}`}>
@@ -67,6 +69,14 @@ export const headerConfig: ComponentConfig<HeaderProps> = {
       type: 'text',
       label: 'Background Color',
     },
+    textColor: {
+      type: 'select',
+      label: 'Text Color',
+      options: [
+        { label: 'Dark (for light backgrounds)', value: 'dark' },
+        { label: 'Light (for dark backgrounds)', value: 'light' },
+      ],
+    },
     alignment: {
       type: 'select',
       label: 'Alignment',
@@ -90,6 +100,7 @@ export const headerConfig: ComponentConfig<HeaderProps> = {
     logoAlt: 'Company Logo',
     logoWidth: 150,
     backgroundColor: '#ffffff',
+    textColor: 'dark',
     alignment: 'center',
     showSecureBadge: true,
   },

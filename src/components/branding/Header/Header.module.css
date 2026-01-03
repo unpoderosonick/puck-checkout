@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -76,6 +76,36 @@
   font-size: var(--font-size-sm);
   font-weight: 500;
   color: var(--color-text-secondary);
+}
+
+/* Dark text theme (for light backgrounds) - default */
+.dark .logoPlaceholder {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.dark .secureText,
+.dark .lockIcon {
+  color: var(--color-text-secondary);
+}
+
+.dark .secureBadge {
+  background: var(--color-background);
+}
+
+/* Light text theme (for dark backgrounds) */
+.light .logoPlaceholder {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.light .secureText,
+.light .lockIcon {
+  color: #ffffff;
+}
+
+.light .secureBadge {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 @media (max-width: 600px) {
