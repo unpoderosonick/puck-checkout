@@ -1,0 +1,120 @@
+/* Container with dashed border */
+.container {
+  padding: var(--spacing-lg);
+  background-color: var(--cfb-background-color, #FDF5E6);
+  border: 3px dashed var(--cfb-border-color, #8B4513);
+  border-radius: var(--radius-md);
+}
+
+/* ===== CHECKBOX AREA WITH HIGHLIGHT ===== */
+.checkboxArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--cfb-highlight-color, #FFEB3B);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-md);
+  cursor: pointer;
+  user-select: none;
+  transition: filter var(--transition-fast);
+}
+
+.checkboxArea:hover {
+  filter: brightness(0.95);
+}
+
+/* ===== ARROW ===== */
+.arrow {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* ===== CHECKBOX STYLING ===== */
+.checkboxWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  transition: all var(--transition-fast);
+}
+
+.checkboxArea:hover .checkmark {
+  border-color: var(--color-primary);
+}
+
+.input:checked + .checkmark {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.input:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* ===== CHECKBOX LABEL ===== */
+.checkboxLabel {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: #27ae60;
+}
+
+/* ===== CONTENT - inline text ===== */
+.content {
+  margin: 0;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* ONE TIME OFFER - red, underlined */
+.offerTitle {
+  font-weight: 700;
+  color: #e74c3c;
+  text-decoration: underline;
+}
+
+.offerDescription {
+  color: var(--color-text);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+
+  .checkboxArea {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .checkboxLabel {
+    font-size: var(--font-size-base);
+  }
+}

@@ -31,6 +31,7 @@ import { postPurchaseOfferConfig } from '../components/upsell/PostPurchaseOffer'
 import { downsellModalConfig } from '../components/upsell/DownsellModal';
 import { orderBumpConfig } from '../components/upsell/OrderBump';
 import { bundleBuilderConfig } from '../components/upsell/BundleBuilder';
+import { clickFunnelBumpConfig } from '../components/upsell/ClickFunnelBump';
 
 // Branding Components
 import { headerConfig } from '../components/branding/Header';
@@ -57,7 +58,7 @@ export const config: Config = {
     },
     upsell: {
       title: 'Upsell & Offers',
-      components: ['UpsellCard', 'PostPurchaseOffer', 'DownsellModal', 'OrderBump', 'BundleBuilder'],
+      components: ['UpsellCard', 'PostPurchaseOffer', 'DownsellModal', 'OrderBump', 'BundleBuilder', 'ClickFunnelBump'],
       defaultExpanded: true,
     },
     branding: {
@@ -136,6 +137,7 @@ export const config: Config = {
     DownsellModal: downsellModalConfig,
     OrderBump: orderBumpConfig,
     BundleBuilder: bundleBuilderConfig,
+    ClickFunnelBump: clickFunnelBumpConfig,
 
     // Branding
     Header: headerConfig,
