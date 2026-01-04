@@ -1,128 +1,123 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: #f8fafc;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px;
-  background: white;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.backButton {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  background: white;
-  color: #1e293b;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.backButton:hover {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0;
-}
-
-.placeholder {
-  width: 140px;
-}
-
-.previewArea {
-  flex: 1;
-  overflow-y: auto;
-  padding: 24px;
-}
-
-.previewContent {
-  max-width: 1200px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.fullScreenContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f5f5f5;
   overflow: hidden;
+  z-index: 9999;
 }
 
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px;
-  background: white;
-  border-top: 1px solid #e2e8f0;
-}
-
-.navButton {
+.exitButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 10px 16px;
   border: none;
-  border-radius: 6px;
-  background: #1773b0;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.8);
   color: white;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.navButton:hover:not(:disabled) {
-  background: #125a8a;
+.exitButton:hover {
+  background: rgba(0, 0, 0, 0.95);
+  transform: scale(1.02);
 }
 
-.navButton:disabled {
-  background: #e2e8f0;
-  color: #94a3b8;
-  cursor: not-allowed;
+.exitButton svg {
+  flex-shrink: 0;
 }
 
 .stepIndicator {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 10000;
+}
+
+.stepBadge {
+  padding: 8px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
   font-size: 14px;
-  color: #64748b;
-  font-weight: 500;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stepHint {
+  font-size: 12px;
+  color: #666;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.previewContent {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for a cleaner look but keep functionality */
+.previewContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.previewContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.previewContent::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.previewContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
-  .header {
-    padding: 12px 16px;
+@media (max-width: 768px) {
+  .exitButton {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
   }
 
-  .backButton span {
+  .exitButton span {
     display: none;
   }
 
-  .placeholder {
+  .stepIndicator {
+    top: 10px;
+    left: 10px;
+    transform: none;
+  }
+
+  .stepBadge {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .stepHint {
     display: none;
-  }
-
-  .previewArea {
-    padding: 16px;
-  }
-
-  .footer {
-    padding: 12px 16px;
-  }
-
-  .navButton {
-    padding: 8px 16px;
   }
 }
