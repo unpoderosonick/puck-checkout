@@ -15,6 +15,9 @@ export interface BundleBuilderProps {
   products: BundleProduct[];
   discountPercentage: number;
   addButtonText: string;
+  maxWidth?: number;
+  containerPadding?: 'none' | 'small' | 'medium' | 'large';
+  alignment?: 'left' | 'center' | 'right';
 }
 
 export const BundleBuilder = ({
@@ -23,14 +26,23 @@ export const BundleBuilder = ({
   products,
   discountPercentage,
   addButtonText,
+  maxWidth = 700,
+  containerPadding = 'large',
+  alignment = 'center',
 }: BundleBuilderProps): JSX.Element => {
   const selectedProducts = products.filter((p) => p.selected);
   const totalOriginal = selectedProducts.reduce((sum, p) => sum + p.price, 0);
   const totalDiscounted = totalOriginal * (1 - discountPercentage / 100);
   const savings = totalOriginal - totalDiscounted;
 
+  const containerStyle: React.CSSProperties = {
+    maxWidth: maxWidth ? `${maxWidth}px` : undefined,
+    marginLeft: alignment === 'center' || alignment === 'right' ? 'auto' : undefined,
+    marginRight: alignment === 'center' || alignment === 'left' ? 'auto' : undefined,
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={containerStyle} data-padding={containerPadding}>
       <div className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.subtitle}>{subtitle}</p>
@@ -124,6 +136,29 @@ export const bundleBuilderConfig: ComponentConfig<BundleBuilderProps> = {
       type: 'text',
       label: 'Add Button Text',
     },
+    maxWidth: {
+      type: 'number',
+      label: 'Max Width (px)',
+    },
+    containerPadding: {
+      type: 'select',
+      label: 'Padding',
+      options: [
+        { label: 'None', value: 'none' },
+        { label: 'Small (8px)', value: 'small' },
+        { label: 'Medium (16px)', value: 'medium' },
+        { label: 'Large (24px)', value: 'large' },
+      ],
+    },
+    alignment: {
+      type: 'select',
+      label: 'Alignment',
+      options: [
+        { label: 'Left', value: 'left' },
+        { label: 'Center', value: 'center' },
+        { label: 'Right', value: 'right' },
+      ],
+    },
   },
   defaultProps: {
     title: 'Complete Your Setup',
@@ -135,6 +170,9 @@ export const bundleBuilderConfig: ComponentConfig<BundleBuilderProps> = {
     ],
     discountPercentage: 20,
     addButtonText: 'Add Bundle to Cart',
+    maxWidth: 700,
+    containerPadding: 'large',
+    alignment: 'center',
   },
   render: BundleBuilder,
 };
