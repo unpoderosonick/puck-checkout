@@ -139,20 +139,6 @@ export const FlowPreview = (): JSX.Element => {
         <span>Exit Preview</span>
       </button>
 
-      {/* Step Indicator */}
-      <div className={styles.stepIndicator}>
-        <span className={styles.stepBadge}>
-          {currentStep === 'checkout' && 'Checkout'}
-          {currentStep === 'order-bump' && 'Order Bump'}
-          {currentStep === 'downsell' && 'Downsell'}
-        </span>
-        <span className={styles.stepHint}>
-          {currentStep === 'checkout' && 'Click "Pay Now" to continue'}
-          {currentStep === 'order-bump' && 'Click "No Thanks" or accept the offer'}
-          {currentStep === 'downsell' && 'Last step - any action restarts flow'}
-        </span>
-      </div>
-
       {/* Full Screen Preview */}
       <div className={styles.previewContent} ref={previewRef}>
         <Render config={config} data={pageData} />
