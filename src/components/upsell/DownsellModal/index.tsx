@@ -1,15 +1,16 @@
 import type { ComponentConfig } from '@measured/puck';
+import type { ReactNode } from 'react';
 import styles from './DownsellModal.module.css';
 
 export interface DownsellModalProps {
-  title: string;
-  message: string;
+  title: string | ReactNode;
+  message: string | ReactNode;
   image: string;
-  productName: string;
+  productName: string | ReactNode;
   originalPrice: number;
   downsellPrice: number;
-  acceptText: string;
-  declineText: string;
+  acceptText: string | ReactNode;
+  declineText: string | ReactNode;
 }
 
 export const DownsellModal = ({
@@ -34,7 +35,7 @@ export const DownsellModal = ({
 
         <div className={styles.content}>
           <div className={styles.product}>
-            <img src={image} alt={productName} className={styles.image} />
+            <img src={image} alt={typeof productName === 'string' ? productName : 'Product'} className={styles.image} />
             <div className={styles.details}>
               <h3 className={styles.productName}>{productName}</h3>
               <div className={styles.pricing}>
@@ -62,10 +63,12 @@ export const downsellModalConfig: ComponentConfig<DownsellModalProps> = {
     title: {
       type: 'text',
       label: 'Title',
+      contentEditable: true,
     },
     message: {
       type: 'textarea',
       label: 'Message',
+      contentEditable: true,
     },
     image: {
       type: 'text',
@@ -74,6 +77,7 @@ export const downsellModalConfig: ComponentConfig<DownsellModalProps> = {
     productName: {
       type: 'text',
       label: 'Product Name',
+      contentEditable: true,
     },
     originalPrice: {
       type: 'number',
@@ -86,10 +90,12 @@ export const downsellModalConfig: ComponentConfig<DownsellModalProps> = {
     acceptText: {
       type: 'text',
       label: 'Accept Button Text',
+      contentEditable: true,
     },
     declineText: {
       type: 'text',
       label: 'Decline Button Text',
+      contentEditable: true,
     },
   },
   defaultProps: {

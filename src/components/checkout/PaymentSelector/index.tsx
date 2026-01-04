@@ -198,36 +198,20 @@ export const paymentSelectorConfig: ComponentConfig<PaymentSelectorProps> = {
       label: 'Security Text',
     },
     showCreditCard: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Credit Card',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     showPayPal: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show PayPal',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     showApplePay: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Apple Pay',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     showGooglePay: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Google Pay',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     selectedMethod: {
       type: 'select',

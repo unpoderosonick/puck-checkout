@@ -72,12 +72,8 @@ export const phoneFieldConfig: ComponentConfig<PhoneFieldProps> = {
       label: 'Placeholder',
     },
     required: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Required',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     defaultCountry: {
       type: 'select',
@@ -93,12 +89,8 @@ export const phoneFieldConfig: ComponentConfig<PhoneFieldProps> = {
       ],
     },
     showFlag: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Flag',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

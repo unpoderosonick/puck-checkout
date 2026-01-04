@@ -46,12 +46,8 @@ export const nameFieldsRowConfig: ComponentConfig<NameFieldsRowProps> = {
       label: 'Last Name Placeholder',
     },
     required: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Required',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

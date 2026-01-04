@@ -32,12 +32,8 @@ export const dividerConfig: ComponentConfig<DividerProps> = {
       ],
     },
     showLine: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Line',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

@@ -87,12 +87,8 @@ export const headerConfig: ComponentConfig<HeaderProps> = {
       ],
     },
     showSecureBadge: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Secure Badge',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

@@ -55,20 +55,12 @@ export const addressFieldConfig: ComponentConfig<AddressFieldProps> = {
       label: 'Placeholder',
     },
     required: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Required',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     showApartment: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Apartment Field',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     apartmentPlaceholder: {
       type: 'text',

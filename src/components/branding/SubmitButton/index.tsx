@@ -1,8 +1,9 @@
 import type { ComponentConfig } from '@measured/puck';
+import type { ReactNode } from 'react';
 import styles from './SubmitButton.module.css';
 
 export interface SubmitButtonProps {
-  text: string;
+  text: string | ReactNode;
   showLockIcon: boolean;
   showAmount: boolean;
   amount: number;
@@ -46,22 +47,15 @@ export const submitButtonConfig: ComponentConfig<SubmitButtonProps> = {
     text: {
       type: 'text',
       label: 'Button Text',
+      contentEditable: true,
     },
     showLockIcon: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Lock Icon',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     showAmount: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Amount',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     amount: {
       type: 'number',
@@ -85,12 +79,8 @@ export const submitButtonConfig: ComponentConfig<SubmitButtonProps> = {
       ],
     },
     fullWidth: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Full Width',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     variant: {
       type: 'select',

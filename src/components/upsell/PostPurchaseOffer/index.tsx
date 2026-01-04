@@ -1,18 +1,19 @@
 import type { ComponentConfig } from '@measured/puck';
+import type { ReactNode } from 'react';
 import styles from './PostPurchaseOffer.module.css';
 
 export interface PostPurchaseOfferProps {
-  headline: string;
-  subheadline: string;
+  headline: string | ReactNode;
+  subheadline: string | ReactNode;
   image: string;
-  productName: string;
+  productName: string | ReactNode;
   features: { feature: string }[];
   originalPrice: number;
   offerPrice: number;
   showCountdown: boolean;
   countdownSeconds: number;
-  acceptText: string;
-  declineText: string;
+  acceptText: string | ReactNode;
+  declineText: string | ReactNode;
 }
 
 export const PostPurchaseOffer = ({
@@ -59,7 +60,7 @@ export const PostPurchaseOffer = ({
 
         <div className={styles.content}>
           <div className={styles.imageWrapper}>
-            <img src={image} alt={productName} className={styles.image} />
+            <img src={image} alt={typeof productName === 'string' ? productName : 'Product'} className={styles.image} />
           </div>
 
           <div className={styles.details}>
@@ -100,10 +101,12 @@ export const postPurchaseOfferConfig: ComponentConfig<PostPurchaseOfferProps> = 
     headline: {
       type: 'text',
       label: 'Headline',
+      contentEditable: true,
     },
     subheadline: {
       type: 'text',
       label: 'Subheadline',
+      contentEditable: true,
     },
     image: {
       type: 'text',
@@ -112,6 +115,7 @@ export const postPurchaseOfferConfig: ComponentConfig<PostPurchaseOfferProps> = 
     productName: {
       type: 'text',
       label: 'Product Name',
+      contentEditable: true,
     },
     features: {
       type: 'array',
@@ -131,12 +135,8 @@ export const postPurchaseOfferConfig: ComponentConfig<PostPurchaseOfferProps> = 
       label: 'Offer Price',
     },
     showCountdown: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Countdown',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     countdownSeconds: {
       type: 'number',
@@ -145,10 +145,12 @@ export const postPurchaseOfferConfig: ComponentConfig<PostPurchaseOfferProps> = 
     acceptText: {
       type: 'text',
       label: 'Accept Button Text',
+      contentEditable: true,
     },
     declineText: {
       type: 'text',
       label: 'Decline Button Text',
+      contentEditable: true,
     },
   },
   defaultProps: {

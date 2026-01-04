@@ -79,12 +79,8 @@ export const footerLinksConfig: ComponentConfig<FooterLinksProps> = {
       label: 'Copyright Text',
     },
     showCopyright: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Copyright',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

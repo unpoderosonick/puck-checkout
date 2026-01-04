@@ -157,12 +157,8 @@ export const tipSelectorConfig: ComponentConfig<TipSelectorProps> = {
         label: { type: 'text', label: 'Label' },
         value: { type: 'number', label: 'Value' },
         isPercentage: {
-          type: 'radio',
+          type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
           label: 'Is Percentage',
-          options: [
-            { label: 'Yes', value: true },
-            { label: 'No', value: false },
-          ],
         },
       },
       defaultItemProps: {
@@ -172,12 +168,8 @@ export const tipSelectorConfig: ComponentConfig<TipSelectorProps> = {
       },
     },
     showCustom: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Custom Amount',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     customPlaceholder: {
       type: 'text',

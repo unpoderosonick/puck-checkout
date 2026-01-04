@@ -1,17 +1,18 @@
 import type { ComponentConfig } from '@measured/puck';
+import type { ReactNode } from 'react';
 import styles from './UpsellCard.module.css';
 
 export interface UpsellCardProps {
   image: string;
-  title: string;
-  description: string;
+  title: string | ReactNode;
+  description: string | ReactNode;
   originalPrice: number;
   salePrice: number;
-  discountBadge: string;
+  discountBadge: string | ReactNode;
   showTimer: boolean;
   timerMinutes: number;
-  buttonText: string;
-  declineText: string;
+  buttonText: string | ReactNode;
+  declineText: string | ReactNode;
 }
 
 export const UpsellCard = ({
@@ -45,7 +46,7 @@ export const UpsellCard = ({
 
       <div className={styles.content}>
         <div className={styles.imageWrapper}>
-          <img src={image} alt={title} className={styles.image} />
+          <img src={image} alt={typeof title === 'string' ? title : 'Upsell product'} className={styles.image} />
         </div>
 
         <div className={styles.details}>
@@ -78,10 +79,12 @@ export const upsellCardConfig: ComponentConfig<UpsellCardProps> = {
     title: {
       type: 'text',
       label: 'Title',
+      contentEditable: true,
     },
     description: {
       type: 'textarea',
       label: 'Description',
+      contentEditable: true,
     },
     originalPrice: {
       type: 'number',
@@ -94,14 +97,11 @@ export const upsellCardConfig: ComponentConfig<UpsellCardProps> = {
     discountBadge: {
       type: 'text',
       label: 'Discount Badge Text',
+      contentEditable: true,
     },
     showTimer: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Timer',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     timerMinutes: {
       type: 'number',
@@ -110,10 +110,12 @@ export const upsellCardConfig: ComponentConfig<UpsellCardProps> = {
     buttonText: {
       type: 'text',
       label: 'Accept Button Text',
+      contentEditable: true,
     },
     declineText: {
       type: 'text',
       label: 'Decline Button Text',
+      contentEditable: true,
     },
   },
   defaultProps: {

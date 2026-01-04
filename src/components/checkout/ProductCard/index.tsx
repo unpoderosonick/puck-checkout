@@ -1,10 +1,11 @@
 import type { ComponentConfig } from '@measured/puck';
+import type { ReactNode } from 'react';
 import styles from './ProductCard.module.css';
 
 export interface ProductCardProps {
   image: string;
-  name: string;
-  variant: string;
+  name: string | ReactNode;
+  variant: string | ReactNode;
   price: number;
   quantity: number;
   showQuantityBadge: boolean;
@@ -21,7 +22,7 @@ export const ProductCard = ({
   return (
     <div className={styles.product}>
       <div className={styles.imageWrapper}>
-        <img src={image} alt={name} className={styles.image} />
+        <img src={image} alt={typeof name === 'string' ? name : 'Product'} className={styles.image} />
         {showQuantityBadge && quantity > 1 && (
           <span className={styles.quantityBadge}>{quantity}</span>
         )}
@@ -54,10 +55,12 @@ export const productCardConfig: ComponentConfig<ProductCardProps> = {
     name: {
       type: 'text',
       label: 'Product Name',
+      contentEditable: true,
     },
     variant: {
       type: 'text',
       label: 'Variant (Size, Color, etc.)',
+      contentEditable: true,
     },
     price: {
       type: 'number',
@@ -68,12 +71,8 @@ export const productCardConfig: ComponentConfig<ProductCardProps> = {
       label: 'Quantity',
     },
     showQuantityBadge: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Quantity Badge',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

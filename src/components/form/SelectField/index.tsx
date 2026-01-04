@@ -68,12 +68,8 @@ export const selectFieldConfig: ComponentConfig<SelectFieldProps> = {
       label: 'Placeholder',
     },
     required: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Required',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     options: {
       type: 'array',

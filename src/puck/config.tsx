@@ -93,15 +93,15 @@ export const config: Config = {
       secondaryColor: '#125a8a',
       fontFamily: 'Inter',
     },
-    render: ({ children, primaryColor, secondaryColor, fontFamily }) => (
+    render: (props: { children?: React.ReactNode; primaryColor?: string; secondaryColor?: string; fontFamily?: string }) => (
       <div
         style={{
-          '--puck-primary': primaryColor,
-          '--puck-secondary': secondaryColor,
-          '--puck-font-family': fontFamily,
+          '--puck-primary': props.primaryColor,
+          '--puck-secondary': props.secondaryColor,
+          '--puck-font-family': props.fontFamily,
         } as React.CSSProperties}
       >
-        {children}
+        {props.children}
       </div>
     ),
   },

@@ -41,12 +41,8 @@ export const discountInputConfig: ComponentConfig<DiscountInputProps> = {
       label: 'Button Text',
     },
     showIcon: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Icon',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

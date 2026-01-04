@@ -65,12 +65,8 @@ export const textFieldConfig: ComponentConfig<TextFieldProps> = {
       ],
     },
     required: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Required',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     helpText: {
       type: 'text',

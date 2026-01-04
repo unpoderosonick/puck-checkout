@@ -1,10 +1,11 @@
 import type { ComponentConfig } from '@measured/puck';
+import type { ReactNode } from 'react';
 import { DropZone } from '@measured/puck';
 import { useState } from 'react';
 import styles from './Section.module.css';
 
 export interface SectionProps {
-  title: string;
+  title: string | ReactNode;
   showTitle: boolean;
   collapsible: boolean;
 }
@@ -47,22 +48,15 @@ export const sectionConfig: ComponentConfig<SectionProps> = {
     title: {
       type: 'text',
       label: 'Title',
+      contentEditable: true,
     },
     showTitle: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Title',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     collapsible: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Collapsible',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

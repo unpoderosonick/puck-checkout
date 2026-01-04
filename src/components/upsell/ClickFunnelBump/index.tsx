@@ -89,12 +89,8 @@ export const clickFunnelBumpConfig: ComponentConfig<ClickFunnelBumpProps> = {
       label: 'Checkbox Highlight Color (hex)',
     },
     showArrow: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Decorative Arrow',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

@@ -133,12 +133,8 @@ export const orderSummaryConfig: ComponentConfig<OrderSummaryProps> = {
       label: 'Tax Amount',
     },
     showTax: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Tax',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
     currency: {
       type: 'select',

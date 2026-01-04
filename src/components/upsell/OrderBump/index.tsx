@@ -1,13 +1,14 @@
 import type { ComponentConfig } from '@measured/puck';
+import type { ReactNode } from 'react';
 import styles from './OrderBump.module.css';
 
 export interface OrderBumpProps {
-  title: string;
-  description: string;
+  title: string | ReactNode;
+  description: string | ReactNode;
   image: string;
   price: number;
   originalPrice: number;
-  checkboxLabel: string;
+  checkboxLabel: string | ReactNode;
   highlighted: boolean;
 }
 
@@ -33,7 +34,7 @@ export const OrderBump = ({
         </div>
 
         <div className={styles.imageWrapper}>
-          <img src={image} alt={title} className={styles.image} />
+          <img src={image} alt={typeof title === 'string' ? title : 'Order bump product'} className={styles.image} />
         </div>
 
         <div className={styles.details}>
@@ -64,10 +65,12 @@ export const orderBumpConfig: ComponentConfig<OrderBumpProps> = {
     title: {
       type: 'text',
       label: 'Title',
+      contentEditable: true,
     },
     description: {
       type: 'textarea',
       label: 'Description',
+      contentEditable: true,
     },
     image: {
       type: 'text',
@@ -84,14 +87,11 @@ export const orderBumpConfig: ComponentConfig<OrderBumpProps> = {
     checkboxLabel: {
       type: 'text',
       label: 'Checkbox Label',
+      contentEditable: true,
     },
     highlighted: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Highlighted',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

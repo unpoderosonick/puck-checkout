@@ -68,12 +68,8 @@ export const trustBadgesConfig: ComponentConfig<TrustBadgesProps> = {
       ],
     },
     showLabels: {
-      type: 'radio',
+      type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
       label: 'Show Labels',
-      options: [
-        { label: 'Yes', value: true },
-        { label: 'No', value: false },
-      ],
     },
   },
   defaultProps: {

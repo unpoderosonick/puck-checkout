@@ -112,12 +112,8 @@ export const bundleBuilderConfig: ComponentConfig<BundleBuilderProps> = {
         image: { type: 'text', label: 'Image URL' },
         price: { type: 'number', label: 'Price' },
         selected: {
-          type: 'radio',
+          type: 'radio', options: [{ label: 'Yes', value: true }, { label: 'No', value: false }],
           label: 'Pre-selected',
-          options: [
-            { label: 'Yes', value: true },
-            { label: 'No', value: false },
-          ],
         },
       },
       defaultItemProps: {
