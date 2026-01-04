@@ -41,6 +41,11 @@ import { footerLinksConfig } from '../components/branding/FooterLinks';
 
 export const config: Config = {
   categories: {
+    upsell: {
+      title: 'Upsell & Offers',
+      components: ['UpsellCard', 'PostPurchaseOffer', 'DownsellModal', 'OrderBump', 'BundleBuilder', 'ClickFunnelBump'],
+      defaultExpanded: true,
+    },
     layout: {
       title: 'Layout',
       components: ['CheckoutContainer', 'Section', 'FormRow', 'Divider'],
@@ -54,11 +59,6 @@ export const config: Config = {
     checkout: {
       title: 'Checkout',
       components: ['ProductCard', 'OrderSummary', 'ShippingSelector', 'PaymentSelector', 'DiscountInput', 'TipSelector'],
-      defaultExpanded: true,
-    },
-    upsell: {
-      title: 'Upsell & Offers',
-      components: ['UpsellCard', 'PostPurchaseOffer', 'DownsellModal', 'OrderBump', 'BundleBuilder', 'ClickFunnelBump'],
       defaultExpanded: true,
     },
     branding: {
