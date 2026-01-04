@@ -122,8 +122,8 @@ export const defaultCheckoutData: Data = {
         props: {
           id: 'product-1',
           image: 'https://cdn.shopify.com/s/files/1/0591/6400/0352/files/lanus-img-pp-1.png?v=1765209143',
-          name: 'Lanus™ El Cielo es Tuyo!',
-          variant: 'Lanus™ Pro (2 batteries)',
+          name: 'Lanus El Cielo es Tuyo!',
+          variant: 'Lanus Pro (2 batteries)',
           price: 129.00,
           quantity: 1,
           showQuantityBadge: true,

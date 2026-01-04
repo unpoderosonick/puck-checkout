@@ -14,4 +14,12 @@ export default defineConfig({
       localsConvention: 'camelCase',
     },
   },
+  // Enable SPA routing fallback for dev server
+  server: {
+    historyApiFallback: true,
+  },
+  // Optimize build chunks
+  build: {
+    chunkSizeWarningLimit: 600,
+  },
 });
