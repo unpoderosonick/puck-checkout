@@ -1,8 +1,8 @@
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
 import { Puck } from '@measured/puck';
 import type { Data } from '@measured/puck';
 import { config } from '../puck/config';
-import { usePagesStore, markPageAsChanged } from '../store/pagesStore';
+import { usePagesStore } from '../store/pagesStore';
 import { PAGE_CONFIGS, type PageType } from '../types/pages';
 
 interface PageEditorProps {
@@ -15,23 +15,26 @@ export const PageEditor = ({ pageType }: PageEditorProps): JSX.Element => {
 
   // Get data directly from store for this page type
   const pageData = pages[pageType];
-  const latestDataRef = useRef<Data>(pageData);
+
+  console.log(`[PageEditor] Rendering page: ${pageType}`);
+  console.log(`[PageEditor] pageData.content length:`, pageData?.content?.length);
+  console.log(`[PageEditor] pageData.zones keys:`, Object.keys(pageData?.zones || {}));
 
   const handlePublish = useCallback(
     (publishData: Data) => {
+      console.log(`[PageEditor] handlePublish for: ${pageType}`);
       setPageData(pageType, publishData);
-      latestDataRef.current = publishData;
-      console.log(`Published ${pageType}:`, publishData);
     },
     [pageType, setPageData]
   );
 
+  // Save on every change to ensure data persists
   const handleChange = useCallback(
     (newData: Data) => {
-      latestDataRef.current = newData;
-      markPageAsChanged(pageType);
+      console.log(`[PageEditor] handleChange for ${pageType}, saving to store...`);
+      setPageData(pageType, newData);
     },
-    [pageType]
+    [pageType, setPageData]
   );
 
   const pageTitle = PAGE_CONFIGS[pageType].label + ' Builder';
